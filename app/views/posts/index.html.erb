@@ -26,17 +26,17 @@
           </td>
             
           <td>
-            <%= post.start_at.to_s(:datetime_jp) %>
+            <%= post.start_at %>
           </td>
             
           <td>
-            <%= post.end_at.to_s(:datetime_jp)%>
+            <%= post.end_at %>
           </td>
             
           <td>
-            <% if post.is._all_day%>
+            <% if post.is_all_day %>
               <strong>○</strong>
-            <% end%>
+            <% end %>
           </td>
             
           <td>
@@ -52,7 +52,7 @@
           </td>
             
           <td>
-            <%= link_to "削除", post_path(post), method: :delete, data: {confirm: "本当に削除しますか？"　}　%>
+            <%= link_to "削除", post_path(post), method: :delete , data: {confirm: "本当に削除しますか？"}%>
           </td>
         </tr>
       <% end %>
@@ -63,5 +63,9 @@
 </table>
 
 <p>
-  <%= link_to("スケジュール新規登録", "new_post_pass") %>
+  <%= link_to("スケジュール新規登録", "/posts/new") %>
 </p>
+
+<footer>
+   <h1>現在の日時: <%= Date.current.strftime("%Y年%m月%d日") %>  スケジュール合計:<%= @posts.all.count %></h1>
+</footer>

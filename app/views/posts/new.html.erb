@@ -1,8 +1,8 @@
-<div class="main_container">
+<div class="main-container">
   <div class="infomation">
     <h2>スケジュール一覧</h2>
   </div>
-  <form class="new_post" id="new_post" action="/posts" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="QghHwr76xvAme9kXW36G7MXb7LJ6xwaNCypYZhj9AvBk+YZfmyAD6bp+He1UxO9EtUFCKgh1MNAC1lpGdZsvIA==">
+  <%= form_tag(posts_path, {method: :post}) do %>
     <table>
       <tbody>
         <tr>
@@ -10,7 +10,7 @@
             <label for="post_title">タイトル</label>
           </th>
           <td>
-            <input type="text" name="post[title]" id="post_title" value="<%= @post.title %>">
+            <input type="text" name="post[title]" value="<%= @post.title %>">
           </td>
         </tr>
         <tr>
@@ -18,7 +18,7 @@
             <label for="post_start_at">開始日</label>
           </th>
           <td>
-            <input type="date" name="post[start_at]" id="post_start_at" value="<%= @post.start_at.to_s(:datetime_jp) %>">
+            <input type="date" name="post[start_at]"  value="<%= @post.start_at.to_s%>">
           </td>
         </tr>
         <tr>
@@ -26,7 +26,7 @@
             <label for="post_end_at">終了日</label>
           </th>
           <td>
-            <input type="date" name="post[end_at]" id="post_end_at" value="<%= post.end_at.to_s(:datetime_jp) %>">
+            <input type="date" name="post[end_at]"  value="<%= @post.end_at.to_s %>">
           </td>
         </tr>
         <tr>
@@ -44,7 +44,7 @@
             <label for="post_memo">スケジュールメモ</label>
           </th>
           <td>
-            <textarea class="posts-content" name="post[memo]" id="post_memo"><%= @post.memo %></textarea>
+            <textarea class="posts-content" name="post[memo]"><%= @post.memo %></textarea>
           </td>
         </tr>
       </tbody>
@@ -55,9 +55,9 @@
           <input type="submit" name="commit" value="スケジュールを新規登録する" data-disable-with="スケジュールを新規登録する">
         </li>
         <li>
-          <%= link_to "スケジュール一覧に戻る", index_post_path(post) %>
+          <%= link_to "スケジュール一覧に戻る", :posts %>
         </li>
       </ul>
     </div>
-  </form>
+  <% end %>
 </div>

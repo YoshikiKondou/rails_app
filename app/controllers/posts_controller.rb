@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  def posts
+  def index
     @posts = Post.all.order(created_at: :desc)
   end
   
   def new
-    @posts = Post.new
+    @post = Post.new
   end
   
   def show
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
       flash[:success] = "投稿を作成しました"
     　redirect_to posts_path
     else
-      flash[:now] = "投稿を作成できませんでした"
+      flash[:failure] = "投稿を作成できませんでした"
       render :new
     end
   end
